@@ -20,7 +20,7 @@ public class Student {
     @NotNull(message = "Last name cannot be null")
     private String lastName;
 
-    private Integer age; // Allows null value
+    private Integer age; 
 
     @Email(message = "Email should be valid")
     @NotNull(message = "Email cannot be null")
@@ -31,12 +31,11 @@ public class Student {
 
 
 
-    private Double tenthMarksPercentage; // Allows null value
-    private Double twelfthMarksPercentage; // Allows null value
-    private Double collegeCGPA; // Allows null value
+    private Double tenthMarksPercentage; 
+    private Double twelfthMarksPercentage; 
+    private Double collegeCGPA; 
     
-    
-    // Getters and Setters
+
     public Long getId() {
         return id;
     }

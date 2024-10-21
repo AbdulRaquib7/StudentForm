@@ -20,30 +20,29 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
-    // Show the student form
+
     @GetMapping("/form")
     public String showStudentForm(Model model) {
-        model.addAttribute("student", new Student()); // Bind an empty Student object to the form
-        return "student-form"; // Return the name of the HTML file (student-form.html)
+        model.addAttribute("student", new Student()); 
+        return "student-form"; 
     }
 
-    // Handle form submission and save the student
     @PostMapping("/save")
     public String saveStudent(@ModelAttribute("student") Student student) {
-        studentService.saveStudent(student); // Save the student using the service layer
-        return "redirect:/students/all"; // Redirect to the students list after saving
+        studentService.saveStudent(student); 
+        return "redirect:/students/all"; 
     }
 
-    // Get all students and display them
+  
     @GetMapping("/all")
     public String getAllStudents(Model model) {
         List<Student> students = studentService.getAllStudents();
         model.addAttribute("students", students);
-        return "students-list"; // Return the name of the HTML file displaying all students
+        return "students-list";
     }
     @GetMapping("/delete/{id}")
     public String deleteStudent(@PathVariable Long id) {
-        studentService.deleteStudent(id); // Delete the student by ID
-        return "redirect:/students/all"; // Redirect to the students list after deletion
+        studentService.deleteStudent(id);
+        return "redirect:/students/all"; 
     }
 }

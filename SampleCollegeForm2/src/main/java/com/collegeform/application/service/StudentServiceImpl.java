@@ -21,12 +21,12 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<Student> getAllStudents() {
-        return studentRepository.findAll(); // Fetch all students from the database
+        return studentRepository.findAll();
     }
 
     @Override
     public void saveStudent(Student student) {
-        studentRepository.save(student); // Save the student to the database
+        studentRepository.save(student); 
     }
 
     @Override
