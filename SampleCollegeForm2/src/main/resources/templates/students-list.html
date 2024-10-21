@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Students List</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f4f4f4;
+		}
+
+		table {
+			width: 80%;
+			margin: 20px auto;
+			border-collapse: collapse;
+		}
+
+		th,
+		td {
+			padding: 10px;
+			border: 1px solid #ddd;
+			text-align: left;
+		}
+
+		th {
+			background-color: #007bff;
+			color: white;
+		}
+
+		.button-container {
+			text-align: center;
+			margin: 20px auto;
+		}
+
+		.button {
+			display: inline-block;
+			padding: 10px 20px;
+			background-color: #007bff;
+			color: white;
+			text-decoration: none;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+
+		.button:hover {
+			background-color: #0056b3;
+		}
+
+		.delete-btn {
+			color: red;
+			text-decoration: none;
+		}
+	</style>
+</head>
+
+<body>
+	<h2 style="text-align: center;">Students List</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Age</th>
+				<th>Email</th>
+				<th>Date of Birth</th>
+				<th>10th Marks</th>
+				<th>12th Marks</th>
+				<th>CGPA</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="student : ${students}">
+				<td th:text="${student.firstName}"></td>
+				<td th:text="${student.lastName}"></td>
+				<td th:text="${student.age}"></td>
+				<td th:text="${student.email}"></td>
+				<td th:text="${#temporals.format(student.dob, 'yyyy-MM-dd')}"></td>
+				<td th:text="${student.tenthMarksPercentage}"></td>
+				<td th:text="${student.twelfthMarksPercentage}"></td>
+				<td th:text="${student.collegeCGPA}"></td>
+				<td>
+					<a class="delete-btn" th:href="@{/students/delete/{id}(id=${student.id})}">
+						<i class="fa-solid fa-trash ms-4"></i> Delete
+					</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="button-container">
+		<a href="/students/form" class="button">Add New Student</a>
+	</div>
+</body>
+
+</html>
